@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Story: NBB Controls + Components | malu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066FF;
+            --secondary: #00D4AA;
+            --dark: #0A0F1C;
+            --dark-blue: #1A1F2E;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1A1F2E 0%, #0A0F1C 100%);
+            padding: 100px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,102,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .logos-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0 50px;
+            flex-wrap: wrap;
+            animation: scaleIn 0.8s ease 0.2s both;
+        }
+
+        .logo-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 40px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            height: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-box:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.2);
+        }
+
+        .logo-box img {
+            max-height: 70px;
+            width: auto;
+            filter: brightness(1.2);
+        }
+
+        .logo-separator {
+            font-size: 3rem;
+            color: #00D4AA;
+            font-weight: 300;
+            opacity: 0.6;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 25px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #B4BAC8;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .stats-bar {
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            padding: 50px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.4s; }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .content-card {
+            background: rgba(26, 31, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            position: relative;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #0066FF, #00D4AA);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .content-card p {
+            font-size: 1.1rem;
+            color: #B4BAC8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: scaleIn 0.6s ease both;
+        }
+
+        .result-card:nth-child(2) { animation-delay: 0.1s; }
+        .result-card:nth-child(3) { animation-delay: 0.2s; }
+        .result-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .result-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 102, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+        }
+
+        .result-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 1rem;
+            color: #00D4AA;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .result-text {
+            font-size: 1rem;
+            color: #B4BAC8;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: rgba(0, 212, 170, 0.08);
+            border-left: 4px solid #00D4AA;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .highlight-title {
+            color: #00D4AA;
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .highlight-text {
+            color: #B4BAC8;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 212, 170, 0.1));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 20px;
+            padding: 60px;
+            margin: 60px 0;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .quote-mark {
+            font-size: 5rem;
+            color: #00D4AA;
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #B4BAC8;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #1A1F2E, #0A0F1C);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .cta-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: #B4BAC8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        .focus-list {
+            background: rgba(0, 102, 255, 0.05);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .focus-list h3 {
+            font-size: 1.2rem;
+            color: #00D4AA;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .focus-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .focus-list li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            color: #B4BAC8;
+            font-size: 1.05rem;
+        }
+
+        .focus-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00D4AA;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 50px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .content-card {
+                padding: 35px 25px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .quote-section {
+                padding: 40px 25px;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+
+            .cta-section {
+                padding: 60px 25px;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .logos-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logo-separator {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="badge">Success Story</div>
+            
+            <div class="logos-container">
+                <div class="logo-box">
+                    <img src="nbb-logo.png" alt="NBB Controls + Components">
+                </div>
+                <div class="logo-separator">✕</div>
+                <div class="logo-box">
+                    <img src="malu-logo.png" alt="malu">
+                </div>
+            </div>
+
+            <h1>Wie NBB Controls + Components mit malu die Projektpipeline kontinuierlich gefüllt hält</h1>
+            <p class="subtitle">Von leerer Pipeline zu kontinuierlichem Wachstum – Erfolgreiche SDR-Integration im technischen B2B-Vertrieb</p>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Pipeline-Kontinuität</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value">Massiv</div>
+                    <div class="stat-label">Momentum-Steigerung</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value">Steindl Palfinger</div>
+                    <div class="stat-label">Top-Kunde</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container section">
+        <!-- Situation -->
+        <div class="content-card">
+            <div class="card-icon">📊</div>
+            <h2>Die Situation: Wenn qualifizierte Mitarbeiter in der Kaltakquise feststecken</h2>
+            <p>NBB Controls + Components GmbH, ein innovativer Anbieter im Bereich industrieller Steuerungstechnik, stand vor einer typischen Herausforderung mittelständischer B2B-Unternehmen: Aufgrund der hohen technischen Komplexität ihrer Lösungen waren die Business Development Manager zeitintensiv in die Angebotserstellung eingebunden. Sobald laufende Projekte abgeschlossen waren, stand die Pipeline leer – und die zeitaufwendige Akquise musste von Neuem beginnen.</p>
+            <p>„Die lange Einarbeitungszeit unserer BDM's machte es unmöglich, das Team beliebig zu vergrößern", erklärt das Unternehmen. „Uns fehlte eine strukturierte Trennung zwischen Leadqualifizierung und Projektbearbeitung."</p>
+        </div>
+
+        <!-- Challenge -->
+        <div class="content-card" style="animation-delay: 0.1s">
+            <div class="card-icon">🎯</div>
+            <h2>Die Herausforderung: Zeit als knappstes Gut</h2>
+            <p>Die technische Tiefe der Produkte erforderte hochqualifizierte Mitarbeiter für die Angebotserstellung. Diese wertvollen Ressourcen wurden jedoch durch Kaltakquise und die Bearbeitung unqualifizierter Leads gebunden. Das Ergebnis: Eine unstetige Projektpipeline und ineffiziente Nutzung der Expertise erfahrener BDM's.</p>
+        </div>
+
+        <!-- Solution -->
+        <div class="content-card" style="animation-delay: 0.2s">
+            <div class="card-icon">💡</div>
+            <h2>Die Lösung: SDR-Expertise für kontinuierliches Momentum</h2>
+            <p>malu übernahm die klassische SDR-Funktion – Leadqualifizierung und systematische Kundenakquise. Das Team brachte langjährige Erfahrung in der B2B-Kaltakquise mit und etablierte einen strukturierten Prozess zur Trennung von SDR- und BDM-Aufgaben.</p>
+            
+            <div class="focus-list">
+                <h3>Der Fokus lag auf:</h3>
+                <ul>
+                    <li>Systematischer Qualifizierung potentieller Kunden vor der Übergabe</li>
+                    <li>Zeitnaher Bearbeitung eingehender Leads</li>
+                    <li>Erschließung des „Long Tail" – kleinerer Kunden, die dieselbe Bearbeitungszeit wie Großkunden benötigen</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="content-card" style="animation-delay: 0.3s">
+            <div class="card-icon">📈</div>
+            <h2>Die Ergebnisse: Messbare Verbesserungen in Pipeline und Marktpräsenz</h2>
+            <p>Die Zusammenarbeit brachte konkrete Erfolge:</p>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-icon">🔄</div>
+                    <div class="result-title">Kontinuität</div>
+                    <div class="result-text">Pipeline bleibt gefüllt – kontinuierliche Angebotserstellung</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">⚡</div>
+                    <div class="result-title">Momentum</div>
+                    <div class="result-text">Keine Zeit mehr mit kalten Leads verschwendet</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">🌍</div>
+                    <div class="result-title">Marktpräsenz</div>
+                    <div class="result-text">Massiv gestiegene Bekanntheit im Zielmarkt</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">🎯</div>
+                    <div class="result-title">Top-Kunden</div>
+                    <div class="result-text">Steindl Palfinger als Referenzkunde gewonnen</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Kontinuierliche Projektpipeline:</div>
+                <div class="highlight-text">„Wir schreiben kontinuierlich Angebote, was vorher nicht der Fall war. Uns gehen die Projekte einfach nicht aus", bestätigt NBB Controls + Components.</div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Gesteigertes Momentum:</div>
+                <div class="highlight-text">Keine Zeit mehr verschwendet mit kalten Leads – qualifizierte Mitarbeiter konzentrieren sich ausschließlich auf qualifizierte Kunden.</div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Verbesserte Marktdurchdringung:</div>
+                <div class="highlight-text">Die systematische Akquise führte zu massiv gestiegener Bekanntheit im Zielmarkt. Unter den gewonnenen Kunden: Steindl Palfinger als Top-Kunde sowie kontinuierliches Wachstum im mittelständischen Segment.</div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Kundennähe durch Fokus:</div>
+                <div class="highlight-text">BDM's können sich auf ihre Kernkompetenz konzentrieren – die Arbeit mit qualifizierten Kunden.</div>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <div class="quote-mark">"</div>
+            <div class="quote-text">Absolut Goldwert für ein mittelständisches Unternehmen, welches keine große Vertriebsmannschaft vorhalten kann. Sie bringen eine hohe Expertise in der klassischen Kaltakquise mit. Die Mitarbeiter und allen voran der Geschäftsführer verstehen Ihr Handwerk und können auf eine langjährige Erfahrung zurückgreifen.</div>
+            <div class="quote-author">— NBB Controls + Components GmbH</div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="content-card" style="animation-delay: 0.4s">
+            <div class="card-icon">✨</div>
+            <h2>Das Fazit: Goldwert für den Mittelstand</h2>
+            <p>„Absolut goldwert für ein mittelständisches Unternehmen, welches keine große Vertriebsmannschaft vorhalten kann", fasst NBB Controls + Components zusammen. „Sie bringen eine hohe Expertise in der klassischen Kaltakquise mit. Die Mitarbeiter und allen voran der Geschäftsführer verstehen Ihr Handwerk und können auf eine langjährige Erfahrung zurückgreifen."</p>
+            <p>Der langfristige Effekt: Eine stetige, planbare Pipeline, die es ermöglicht, Ressourcen optimal einzusetzen und kontinuierlich zu wachsen.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Steht Ihre Projektpipeline auch immer wieder leer?</h2>
+            <p class="cta-text">Erfahren Sie, wie malu Ihren Vertrieb mit systematischer SDR-Arbeit unterstützen kann.</p>
+            <a href="https://malu-sales.com" class="cta-button">Jetzt unverbindlich beraten lassen</a>
+        </div>
+    </div>
+</body>
+</html>
